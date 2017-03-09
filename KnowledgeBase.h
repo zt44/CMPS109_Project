@@ -2,9 +2,9 @@
 //  SRI
 //
 //  Created by Babbie Monahelis on 2/25/17.
-//  Copyright © 2017 Babbie Monahelis. All rights reserved.
+//  Copyright ï¿½ 2017 Babbie Monahelis. All rights reserved.
 //
-/*
+
 #ifndef KnowledgeBase_h
 #define KnowledgeBase_h
 

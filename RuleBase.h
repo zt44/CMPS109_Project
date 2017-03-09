@@ -3,9 +3,9 @@
 //  SRI
 //
 //  Created by Babbie Monahelis on 2/28/17.
-//  Copyright © 2017 Babbie Monahelis. All rights reserved.
+//  Copyright ï¿½ 2017 Babbie Monahelis. All rights reserved.
 //
-/*
+
 #ifndef RuleBase_h
 #define RuleBase_h
 
@@ -18,7 +18,7 @@ class RuleBase
 
 private:
 
-	vector<Rule*> rules;
+	map <string, vector<Rule*> rules> RuleDictionary;
 
 public:
 
