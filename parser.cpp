@@ -75,10 +75,25 @@ vector<string> Parser::getFactParam(string str)
 
 vector<string> Parser::getRuleFacts(string str)
 {
-	
-	
-	return vector<string>();
+    
+    stringstream stream(str);
+    string assoc;
+    string param;
+    string member;
+    vector<string> temp;
+    
+    getline(stream, assoc, '(');
+    temp.push_back(assoc); //adding rule assoc to vector
+    
+    getline(stream, param, ')');
+    stringstream mems(param); //finding the members of the rule
+    
+    while( getline(mems, member, ',') )
+        temp.push_back(member); //adding the member of the rule to the vector
+    
+    return temp;
 }
+
 
 
 

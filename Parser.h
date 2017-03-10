@@ -14,7 +14,7 @@ public:
 	vector<string> getFactParam(string);     //returns a vector of the parameters in any given fact line
 	//vector<string> getFactParam(string);     //returns a vector of the parameters in any given fact line
 
-	vector<string> getRuleFacts(string);     //returns a vector of 
+	vector<string> getRuleFacts(string);     //returns a vector of
 	
 	size_t betterFind(const string& haystack, size_t pos, const string& needle, size_t n)    //find the nth instance of a string
 	{
