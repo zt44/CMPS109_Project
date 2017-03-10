@@ -120,10 +120,15 @@ vector<string> Parser::getRuleFacts(string str)
 		indices.push_back(paramCount);
 		i++;
 	}
+	int start1 = indices[0];
+	int end1 = str.find(":-");
+
+	vector<string> facts;    //will hold the actual facts
+	facts.push_back(str.substr(start1 + 1, (end1 - start1) - 1));    //push first fact
 	indices.erase(indices.begin());    //delete first element
 	indices.erase(indices.begin());     //delete second element
 
-	vector<string> facts;    //will hold the actual facts
+
 
 	for (int j = 0; j < indices.size() - 1; j++)
 	{
@@ -133,9 +138,9 @@ vector<string> Parser::getRuleFacts(string str)
 		facts.push_back(str.substr(x + 1, (y - x) - 1));   //push all parameters except the first and last
 	}
 
-	int start = str.rfind(" ");
-	int end = str.rfind(")");
-	facts.push_back(str.substr(start + 1, (end - start)));   //push the last parameter
+	int start2 = str.rfind(" ");
+	int end2 = str.rfind(")");
+	facts.push_back(str.substr(start2 + 1, (end2 - start2)));   //push the last parameter
 
 	return facts;
 }
