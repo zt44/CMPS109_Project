@@ -12,11 +12,11 @@ public:
 	string getInferAssoc(string);     //returns the association of an inference command statement 
 	
 	vector<string> getFactParam(string);     //returns a vector of the parameters in any given fact line
-	//vector<string> getFactParam(string);     //returns a vector of the parameters in any given fact line
+	vector<string> getInferParam(string);     //returns a vector of the parameters in any given fact line
 
-	vector<string> getRuleFacts(string);     //returns a vector of
+	vector<string> getRuleFacts(string);     //returns a vector of 
 	
-	size_t betterFind(const string& haystack, size_t pos, const string& needle, size_t n)    //find the nth instance of a string
+	size_t betterFind(const string& haystack, size_t pos, const string& needle, size_t n)    //find the nth instance of a keyword in a string
 	{
 		size_t found = haystack.find(needle, pos);
 		if (0 == n || string::npos == found)
