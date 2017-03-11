@@ -14,24 +14,25 @@
 
 class RuleBase
 {
-    
+
 private:
     map<string, vector<map <string, vector<string>>>> RuleDictionary;
-    
+
 public:
-    
+
     RuleBase();
-    
+
     void addRule(map<string, vector<string>> mems);
     void removeRule(map<string, vector<string>> mems);
     void removeAllRulesWithKey(string key); //removes all rules with the key
     int totalRules();
     bool exists(string);
+    void RuleBase dropRule(string param, RuleBase *rb);
     vector<map <string, vector<string>>> findRule(string);
-    
-    
-    
-    ~RuleBase(); 
+
+
+
+    ~RuleBase();
 };
 
 #endif /* RuleBase_hpp */
