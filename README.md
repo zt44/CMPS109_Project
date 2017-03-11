@@ -1,2 +1,4 @@
 # CMPS109_Project
-# CMPS109_Project
+After phase 2, we re-evaluated the way inference works and decided to go with a different approach. Rather than have a Component class, we decided we would make an Inference class in its place. Inference reads in any given inference command and parses it using series of function calls to the Parser ADT we implemented. Then an object of type Inference is created and is representative of the configuration of the inference command. We also created an object (of type Inference, Fact, or Rule) for every line in the .sri file. 
+
+We elected to store these objects into maps (within 'KnowledgeBase' and 'RuleBase'). Whereas before phase 3, we didn't have a map for the RuleBase. We thought that having a map would not only make the program more organized, but would also maximize the efficiency of our searching and comparing objects to compute an inference command. Essentially, we thought it would be much more practical and intuitive to compare objects in order to accomplish inference. 
