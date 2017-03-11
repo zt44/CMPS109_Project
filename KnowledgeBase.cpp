@@ -2,51 +2,67 @@
 //  KnowledgeBase.cpp
 //  SRI
 //
-//  Created by Babbie Monahelis on 2/25/17.
-//  Copyright � 2017 Babbie Monahelis. All rights reserved.
+//  Created by Babbie Monahelis on 3/9/17.
+//  Copyright © 2017 Babbie Monahelis. All rights reserved.
 //
 
-#include "KnowledgeBase.h"
-#include "Inference.h"
+#include "KnowledgeBase.hpp"
 
 KnowledgeBase::KnowledgeBase()
 {
-	map<string, vector<Fact *>> FactDictionary = *new map<string, vector<Fact *> >();
+    
 }
 
-bool KnowledgeBase::findFactAssociation(Fact * fact)
+void KnowledgeBase::addFact(vector<string> mems)
 {
-	if (FactDictionary.find(fact->association) == FactDictionary.end())
-		return false;
-
-	return true;
+    string assoc = mems.front(); //stored the association at the front of the vector.
+    
+    mems.erase(mems.begin()); //delete the association because we don't need it anymore
+    
+    vector< vector<string> > temp;
+    temp.push_back(mems);
+    
+    auto add = FactDictionary.emplace(assoc, temp);
+    
+    if ( !add.second )
+    {
+        if ((find((*add.first).second.begin(), (*add.first).second.end(), mems) == (*add.first).second.end()))
+            (*add.first).second.push_back(mems);
+    }
+    
 }
 
-void KnowledgeBase::AddFact(Fact * fact)
+vector< vector<string>> KnowledgeBase::findFact(string assoc)
 {
-	bool found = findFactAssociation(fact);
-
-	if (found == false)
-	{
-		vector<Fact *> tempVector;
-		tempVector.push_back(fact);
-		FactDictionary[fact->association] = tempVector;
-	}
-	else
-	{
-		for (Fact * f : FactDictionary[fact->association])
-		{
-			if (f->members == fact->members)
-				cout << "This fact is already in our knowledge base.\n";
-		}
-
-		FactDictionary[fact->association].push_back(fact);
-
-	}
-
+    bool found;
+    
+    if (FactDictionary.count(assoc) == 0)
+        found = false;
+    else
+        found = true;
+    
+    if (found == true)
+        return FactDictionary[assoc];
+    else
+    {
+        cout << "No facts of that association exists. \n";
+        exit(0);
+    }
+    
 }
 
-KnowledgeBase::~KnowledgeBase()
+bool KnowledgeBase::exists(string assoc)
 {
-	FactDictionary.clear();
+    if (FactDictionary.count(assoc) == 0)
+        return false;
+    else
+        return true; 
 }
+
+
+
+
+
+
+
+
