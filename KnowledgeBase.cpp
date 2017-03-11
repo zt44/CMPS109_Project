@@ -10,37 +10,45 @@
 
 KnowledgeBase::KnowledgeBase()
 {
-    
+
+}
+
+void KnowledgeBase::dropFact(string param, KnowledgeBase *kb)
+{
+    if(kb->FactDictionary.find(param)!=kb->FactDictionary.end())
+    {
+        kb->FactDictionary.erase(param);
+    }
 }
 
 void KnowledgeBase::addFact(vector<string> mems)
 {
     string assoc = mems.front(); //stored the association at the front of the vector.
-    
+
     mems.erase(mems.begin()); //delete the association because we don't need it anymore
-    
+
     vector< vector<string> > temp;
     temp.push_back(mems);
-    
+
     auto add = FactDictionary.emplace(assoc, temp);
-    
+
     if ( !add.second )
     {
         if ((find((*add.first).second.begin(), (*add.first).second.end(), mems) == (*add.first).second.end()))
             (*add.first).second.push_back(mems);
     }
-    
+
 }
 
 vector< vector<string>> KnowledgeBase::findFact(string assoc)
 {
     bool found;
-    
+
     if (FactDictionary.count(assoc) == 0)
         found = false;
     else
         found = true;
-    
+
     if (found == true)
         return FactDictionary[assoc];
     else
@@ -48,7 +56,7 @@ vector< vector<string>> KnowledgeBase::findFact(string assoc)
         cout << "No facts of that association exists. \n";
         exit(0);
     }
-    
+
 }
 
 bool KnowledgeBase::exists(string assoc)
@@ -56,8 +64,9 @@ bool KnowledgeBase::exists(string assoc)
     if (FactDictionary.count(assoc) == 0)
         return false;
     else
-        return true; 
+        return true;
 }
+
 
 
 
