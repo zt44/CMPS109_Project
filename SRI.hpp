@@ -38,7 +38,7 @@ public:
     vector<map<string,string>> inferenceFact(string, vector<string> &);
     vector<map<string,string>> inferenceRule(string, vector<string> &);
     map<string, vector<string>> findRule(string, int);
-    void inference(string p_string);
+    void inference(string);
   
     
 };

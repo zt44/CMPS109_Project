@@ -15,7 +15,7 @@ RuleBase::RuleBase()
 
 void RuleBase::addRule(map<string, vector<string>> mems)
 {
-    string assoc = mems["name"][0];
+    string assoc = mems["association"][0];
     
     if (RuleDictionary.count(assoc) == 0)
         RuleDictionary[assoc].push_back(mems);
@@ -32,7 +32,7 @@ void RuleBase::addRule(map<string, vector<string>> mems)
 
 void RuleBase::removeRule(map<string, vector<string>> mems)
 {
-    vector<string> tempRuleMems = mems.at("name");
+    vector<string> tempRuleMems = mems.at("association");
     string head = tempRuleMems[0];
     
     auto it = find(RuleDictionary.at(head).begin(), RuleDictionary.at(head).end(), mems);

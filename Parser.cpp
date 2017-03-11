@@ -101,22 +101,25 @@ map<string, vector<string>> Parser::addRule(string assoc)
 
     
     getline(newStream, first, ':');
+    
     vector<string> base = parseRule(first);
-    rule["name"].push_back(base[0]);
+    rule["association"].push_back(base[0]);
     
     for(int i = 1; i < base.size(); i++)
-        rule["vars"].push_back(base[i]);
+        rule["mems"].push_back(base[i]);
     
     getline(newStream, rest, ' ');
     getline(newStream, operand, ' ');
-    rule["operand"].push_back(operand);
+    rule["operators"].push_back(operand);
     
     while(getline(newStream, param, ' '))
     {
-        string target = "target";
+        string target = "member";
         target += to_string(i);
+        
         rule[target] = parseRule(param);
-        rule["ts"].push_back("");
+        rule["end"].push_back("");
+        
         i++;
     }
     
