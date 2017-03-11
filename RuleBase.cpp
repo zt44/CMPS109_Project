@@ -10,13 +10,20 @@
 
 RuleBase::RuleBase()
 {
-    
+
+}
+
+void RuleBase::dropRule(string param, RuleBase *rb)
+{
+    if(rules.find(param)!= rules.end())
+        rules.erase(param);
+    cout<<"Dropped rules"<<endl;
 }
 
 void RuleBase::addRule(map<string, vector<string>> mems)
 {
-    string assoc = mems["association"][0];
-    
+    string assoc = mems["name"][0];
+
     if (RuleDictionary.count(assoc) == 0)
         RuleDictionary[assoc].push_back(mems);
     else
@@ -27,19 +34,19 @@ void RuleBase::addRule(map<string, vector<string>> mems)
                 RuleDictionary[assoc].push_back(mems);
         }
     }
-    
+
 }
 
 void RuleBase::removeRule(map<string, vector<string>> mems)
 {
-    vector<string> tempRuleMems = mems.at("association");
+    vector<string> tempRuleMems = mems.at("name");
     string head = tempRuleMems[0];
-    
+
     auto it = find(RuleDictionary.at(head).begin(), RuleDictionary.at(head).end(), mems);
-    
+
     if (it != RuleDictionary.at(head).end())
         RuleDictionary.at(head).erase(it);
-    
+
 }
 
 vector<map <string, vector<string>>> RuleBase::findRule(string assoc)
@@ -67,6 +74,5 @@ int RuleBase::totalRules()
 
 RuleBase::~RuleBase()
 {
-    
-}
 
+}
