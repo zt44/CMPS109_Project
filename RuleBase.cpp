@@ -15,8 +15,8 @@ RuleBase::RuleBase()
 
 void RuleBase::dropRule(string param, RuleBase *rb)
 {
-    if(rules.find(param)!= rules.end())
-        rules.erase(param);
+    if(RuleDictionary.find(param)!= RuleDictionary.end())
+        RuleDictionary.erase(param);
     cout<<"Dropped rules"<<endl;
 }
 
