@@ -1,4 +1,5 @@
 #Makefile
+#retardedmakefileforproject
 CPP = g++
 FLAG = -std=c++11
 MAIN = Main.cpp
