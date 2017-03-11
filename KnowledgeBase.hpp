@@ -16,18 +16,19 @@ class KnowledgeBase
 {
 private:
     map<string, vector<vector<string>>> FactDictionary;
-    
+
 public:
-    
+
     KnowledgeBase();
 
     void addFact(vector<string> mems);
-    void removeFact(vector<string> mems);
+   // void removeFact(vector<string> mems);
     void removeAllFactsWithKey(string key);
     int totalFacts();
     vector<vector<string>> findFact(string assoc);
+    void dropFact(string param, KnowledgeBase *kb);
     bool exists(string);
-    
+
 };
 
 #endif /* KnowledgeBase_hpp */
