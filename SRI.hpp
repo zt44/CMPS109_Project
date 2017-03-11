@@ -25,20 +25,28 @@ private:
     KnowledgeBase * kb;
     RuleBase * rb;
     Parser * parse;
-    
-    
+
+
 public:
     SRI();
     ~SRI();
-    
+
     void inputLine(stringstream &);
     void addFact(string);
     void addRule(string);
     void load(string);
+    void dump(KnowledgeBase *kb, RuleBase *rb);
+    void dumpRF(ostream &os, KnowledgeBase *kb, RuleBase *rb);
+    void drop(string param, KnowledgeBase *kb, RuleBase *rb);
     vector<map<string,string>> inferenceFact(string, vector<string> &);
     vector<map<string,string>> inferenceRule(string, vector<string> &);
     map<string, vector<string>> findRule(string, int);
     void inference(string);
+
+
+};
+
+
   
     
 };
