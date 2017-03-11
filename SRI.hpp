@@ -15,17 +15,13 @@
 #include "KnowledgeBase.hpp"
 #include "Parser.hpp"
 
-
-#include "common.h"
-//#include "KnowledgeBase.h"
 class KnowledgeBase;
 class RuleBase;
 class Parser;
 
-class SRI{
+class SRI
+{
 private:
-    typedef void (SRI::*InEnMFP)(string);
-    map<string, InEnMFP> funcMap;	// function pointers
     KnowledgeBase * kb;
     RuleBase * rb;
     Parser * parse;
